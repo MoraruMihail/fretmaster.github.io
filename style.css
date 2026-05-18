@@ -1,0 +1,333 @@
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-primary:   #0D0D0F;
+  --bg-secondary: #161619;
+  --bg-card:      #1E1E24;
+  --bg-elevated:  #27272F;
+  --accent:       #E8A225;
+  --accent-glow:  #FFB83F;
+  --text-primary: #F0EDE8;
+  --text-secondary: #9A9690;
+  --text-muted:   #5A5750;
+  --correct:      #4CAF50;
+  --radius:       16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── Layout helpers ── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 680px; }
+
+/* ── Nav ── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 60px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid #2A2A32;
+}
+
+.nav-brand {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: color 0.15s;
+}
+
+.nav-links a:hover { color: var(--text-primary); }
+
+/* ── Hero ── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 480px;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin-bottom: 36px;
+  line-height: 1.6;
+}
+
+.string-strip {
+  display: flex;
+  height: 6px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.string { flex: 1; }
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--bg-primary);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 14px 32px;
+  border-radius: 10px;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background: var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+/* ── Sections ── */
+.section { padding: 80px 0; }
+.section-alt { background: var(--bg-secondary); }
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: var(--text-primary);
+}
+
+.body-text {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+
+/* ── App Card ── */
+.app-card {
+  display: flex;
+  gap: 32px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 36px;
+  align-items: flex-start;
+}
+
+.app-card-icon {
+  font-size: 56px;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.app-name {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.app-platforms {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.app-desc {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.app-features {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+  margin-bottom: 28px;
+}
+
+.app-features li {
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding-left: 16px;
+  position: relative;
+}
+
+.app-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--correct);
+  font-weight: 700;
+}
+
+/* ── Store Badges ── */
+.app-badges { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.badge:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* ── Footer ── */
+.footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid #2A2A32;
+  padding: 28px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: color 0.15s;
+}
+
+.footer-links a:hover { color: var(--text-primary); }
+
+/* ── Policy pages ── */
+.policy-header {
+  background: var(--bg-secondary);
+  padding: 60px 24px 40px;
+  text-align: center;
+}
+
+.policy-header h1 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.policy-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.policy-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+.policy-body h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 36px 0 12px;
+}
+
+.policy-body p, .policy-body li {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+.policy-body ul {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .nav-links { gap: 16px; }
+  .app-card { flex-direction: column; gap: 20px; }
+  .app-features { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
